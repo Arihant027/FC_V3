@@ -34,8 +34,8 @@ ENV TZ=Asia/Kolkata
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
-# Expose Flask port
-EXPOSE 5000
+# Expose the new port
+EXPOSE 8000
 
-# Run Flask app
-CMD ["python", "app.py"]
+# Run the app with Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
